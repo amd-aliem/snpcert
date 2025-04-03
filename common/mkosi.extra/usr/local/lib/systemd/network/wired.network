@@ -1,0 +1,6 @@
+[Match]
+Type=ether
+Name=en*
+
+[Network]
+DHCP=yes

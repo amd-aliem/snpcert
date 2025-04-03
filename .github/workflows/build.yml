@@ -1,0 +1,49 @@
+name: Build SEV-SNP OS Images
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        image:
+          - guest-fedora-41
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mkosi qemu-utils
+
+      - name: Build ${{ matrix.image }}
+        run: mkosi -C ${{ matrix.image }}/
+
+      - name: Convert raw image to qcow2
+        run: |
+          qemu-img convert -f raw -O qcow2 ${{ matrix.image }}/image.raw ${{ matrix.image }}/image.qcow2
+
+      - name: Upload EFI image
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.image }}-efi
+          path: ${{ matrix.image }}/image.efi
+          retention-days: 7
+
+      - name: Upload QCOW2 image
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.image }}-qcow2
+          path: ${{ matrix.image }}/image.qcow2
+          retention-days: 7
