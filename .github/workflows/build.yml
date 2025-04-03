@@ -11,7 +11,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+
     strategy:
       matrix:
         image:
@@ -22,14 +23,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          # Upgrade to a newer Ubuntu release
-          sudo sed -i 's/jammy/plucky/g' /etc/apt/sources.list
-          sudo apt-get update || true
-          sudo apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" ubuntu-minimal
-          sudo apt-get dist-upgrade -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"
-          sudo apt-get autoremove -y
-
-          # Install required packages.
+          sudo sed -i 's/noble/plucky/g' /etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get update
           sudo apt-get install -y mkosi qemu-utils systemd-ukify systemd-boot policycoreutils mtools
 
       - name: Build ${{ matrix.image }}
