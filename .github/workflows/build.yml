@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y mkosi qemu-utils systemd-ukify
+          sudo apt-get install -y mkosi qemu-utils systemd-ukify selinux-utils
 
       - name: Build ${{ matrix.image }}
         run: sudo mkosi -C ${{ matrix.image }}/
