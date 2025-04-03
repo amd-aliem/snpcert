@@ -32,16 +32,11 @@ jobs:
         run: |
           qemu-img convert -f raw -O qcow2 ${{ matrix.image }}/image.raw ${{ matrix.image }}/image.qcow2
 
-      - name: Upload EFI image
+      - name: Upload image
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.image }}-efi
-          path: ${{ matrix.image }}/image.efi
-          retention-days: 7
-
-      - name: Upload QCOW2 image
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.image }}-qcow2
-          path: ${{ matrix.image }}/image.qcow2
+          name: ${{ matrix.image }}
+          path: |
+            ${{ matrix.image }}/image.efi
+            ${{ matrix.image }}/image.qcow2
           retention-days: 7
