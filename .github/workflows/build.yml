@@ -1,13 +1,5 @@
-on:
-  push:
-    branches:
-      - main
-
-  pull_request:
-    branches:
-      - main
-
-  workflow_dispatch:
+name: Build Images
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
