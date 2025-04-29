@@ -1,0 +1,14 @@
+name: Style Checks
+on: [push, pull_request]
+
+jobs:
+  commits:
+    name: Check Conventional Commit Syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: webiny/action-conventional-commits@v1.3.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          allowed-commit-types: "feat,fix,build,chore,ci,docs,style,refactor,perf,test"
