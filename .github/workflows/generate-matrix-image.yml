@@ -1,0 +1,33 @@
+name: Generate Certification Matrix Image
+
+on:
+  push:
+    paths:
+      - 'cert-matrix/cert-matrix.csv'
+  workflow_dispatch:
+
+jobs:
+  build-matrix-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          pip install pandas matplotlib
+      - name: Generate matrix image
+        run: |
+          python .github/scripts/csv_to_table_image.py cert-matrix/cert-matrix.png
+      - name: Commit and push image
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add cert-matrix/cert-matrix.png
+          git commit -m 'Auto-update certification matrix image' || echo 'No changes to commit'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
