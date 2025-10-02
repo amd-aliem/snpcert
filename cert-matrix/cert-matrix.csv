@@ -1,0 +1,5 @@
+OS, status, issue
+Ubuntu Plucky, pass, https://github.com/AMDEPYC/sev-certify/issues/154
+Debian Trixie, fail, https://github.com/AMDEPYC/sev-certify/issues/152
+Fedora 41, pass, https://github.com/AMDEPYC/sev-certify/issues/153
+CentOS 10, pass, https://github.com/AMDEPYC/sev-certify/issues/151
