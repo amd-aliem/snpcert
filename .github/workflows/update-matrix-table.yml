@@ -1,4 +1,4 @@
-name: Generate Cert Matrix Image
+name: Update Certification Matrix Table in README
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-matrix-image:
+  update-matrix-table:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -18,16 +18,16 @@ jobs:
           python-version: '3.x'
       - name: Install dependencies
         run: |
-          pip install pandas matplotlib
-      - name: Generate matrix image
+          pip install pandas
+      - name: Update README with Markdown table
         run: |
-          python .github/scripts/csv_to_table_image.py cert-matrix/cert-matrix.png
-      - name: Commit and push image
+          python .github/scripts/csv_to_markdown_table.py
+      - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add cert-matrix/cert-matrix.png
-          git commit -m 'Auto-update certification matrix image' || echo 'No changes to commit'
+          git add README.md
+          git commit -m 'Auto-update Certification Matrix table in README' || echo 'No changes to commit'
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
