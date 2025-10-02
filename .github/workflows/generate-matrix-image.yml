@@ -1,4 +1,4 @@
-name: Generate Certification Matrix Image
+name: Generate Cert Matrix Image
 
 on:
   push:
