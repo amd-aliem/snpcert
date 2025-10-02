@@ -18,6 +18,7 @@ This table contains operating systems that have undergone certification testing 
 | Debian Trixie |  ❌ |  https://github.com/AMDEPYC/sev-certify/issues/152 |
 | Fedora 41 |  ✅ |  https://github.com/AMDEPYC/sev-certify/issues/153 |
 | CentOS 10 |  ✅ |  https://github.com/AMDEPYC/sev-certify/issues/151 |
+| Rocky 10 |  ❌ |  N/A |
 
 
 ## Self-Service Certification Tools
