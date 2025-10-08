@@ -12,12 +12,12 @@ The purpose of this repository is to provide a unified framework for testing and
 This table contains operating systems that have undergone certification testing for AMD features through this repository. 
 
 
-| OS |  Status |  Issue |
+| OS |  Status |  Release |
 |---|---|---|
-| Ubuntu Plucky |  ✅ |  https://github.com/AMDEPYC/sev-certify/issues/154 |
-| Debian Trixie |  ❌ |  https://github.com/AMDEPYC/sev-certify/issues/152 |
-| Fedora 41 |  ✅ |  https://github.com/AMDEPYC/sev-certify/issues/153 |
-| CentOS 10 |  ✅ |  https://github.com/AMDEPYC/sev-certify/issues/151 |
+| Ubuntu Plucky |  ✅ |  [v3.0-0](https://github.com/AMDEPYC/sev-certify/issues/154) |
+| Debian Trixie |  ❌ |  [N/A](https://github.com/AMDEPYC/sev-certify/issues/152) |
+| Fedora 41 |  ✅ |  [v3.0-0](https://github.com/AMDEPYC/sev-certify/issues/153) |
+| CentOS 10 |  ✅ |  [v3.0-0](https://github.com/AMDEPYC/sev-certify/issues/151) |
 | Rocky 10 |  ❌ |  N/A |
 
 
