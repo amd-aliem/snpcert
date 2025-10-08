@@ -1,7 +1,3 @@
-
-![Build Status](https://github.com/AMDEPYC/sev-certify/actions/workflows/build-images.yml/badge.svg)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-
 # Welcome to SEV-SNP OS Certification
 
 
