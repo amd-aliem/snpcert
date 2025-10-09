@@ -48,7 +48,7 @@ The repository is organized as follows:
 	- `common/`: Shared configuration files for use by multiple modules.
 	- `embed-guest-image/`: Scripts and configs for embedding guest images into host images.
 	- `guest/`: Guest OS configuration for certification.
-	- `guest-measurement/`: Tools and scripts for measuring guest state and integrity.
+	- `guest-measurement/`: Tools and scripts for generating the expected measurement for the test guest.
 	- `guest-notices/`: Systemd configuration and notification handling for guests.
 	- `host/`: Host OS configuration for certification.
 	- `launch-snp-guest/`: Scripts for launching SEV-SNP guests.
