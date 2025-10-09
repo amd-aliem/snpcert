@@ -18,14 +18,6 @@ If you are using a host image built by this repository, snphost is already insta
 
 2. Unzip the artifacts.
 
-3. Run them:
-
-```sh
-$ qemu-kvm -m 2G \
-    -bios /usr/share/edk2/ovmf/OVMF_CODE.fd \
-    -kernel guest/fedora/41/image.efi \
-    -hda guest/fedora/41/image.qcow2
-```
 
 4. <ins>**Launch SNP Guest:** </ins>   Run an SNP guest with the direct boot options and kernel-hashes=on for the confidential guest measured boot:
 
