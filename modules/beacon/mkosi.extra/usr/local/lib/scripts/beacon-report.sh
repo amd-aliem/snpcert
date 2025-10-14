@@ -29,7 +29,7 @@ for sev_version in "${SEV_VERSIONS[@]}"; do
   SEV_CERT_FILE="${HOME:-/root}/sev_certificate_v${sev_version}.txt"
 
   # Call beacon
-  beacon report --title "$SEV_TITLE" --body "$SEV_CERT_FILE" --label "certificate" --label "${OS_LABEL}"
+  beacon report --title "$SEV_TITLE" --body "$SEV_CERT_FILE" --label "certificate" --label "${OS_LABEL}" --milestone "v${sev_version}"
 
   echo "Published SEV certificate via beacon with title: $SEV_TITLE"
 done
