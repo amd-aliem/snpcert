@@ -29,15 +29,15 @@ jobs:
             const milestone = issue.milestone.title;
 
             // Find distribution label (format: "<string>-<number>")
-            const distroLabel = issue.labels.find(label => label.name.match(/^[a-z]+-\d+(?:\.\d+)?$/));
+            const distroLabel = issue.labels.find(label => label.name.match(/^[a-zA-Z]+-\d+(?:\.\d+)?$/i));
             if (!distroLabel) {
               console.log('Could not find distribution label in format "<string>-<number>"');
               return;
             }
 
-            // Convert label to table OS name
+            // Convert label to OS name (e.g., "ubuntu-25.04" to "Ubuntu 25.04")
             const [os, version] = distroLabel.name.split('-');
-            const osName = os.charAt(0).toUpperCase() + os.slice(1) + ' ' + version;
+            const osName = os + ' ' + version;
 
             // Create new table row content
             const newStatus = '✅'; // Assuming new certification issues indicate passing
