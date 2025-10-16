@@ -37,7 +37,8 @@ jobs:
 
             // Convert label to OS name (e.g., "ubuntu-25.04" to "Ubuntu 25.04")
             const [os, version] = distroLabel.name.split('-');
-            const osName = os + ' ' + version;
+            const osName = os.charAt(0).toUpperCase() + os.slice(1) + ' ' + version;
+            const osPattern = new RegExp(`^\\|\\s*${os}\\s+${version}\\s*\\|`, 'i');
 
             // Create new table row content
             const newStatus = '✅'; // Assuming new certification issues indicate passing
@@ -67,8 +68,12 @@ jobs:
 
             // Update existing row or add new row
             for (let i = tableStart + 2; i < tableEnd; i++) {
-              if (lines[i].includes(osName)) {
-                lines[i] = newRow;
+              if (osPattern.test(lines[i])) {
+                // Extract existing OS name from the current line
+                const existingName = lines[i].match(/^\|\s*([^|]+?)\s*\|/)[1];
+                // Create new row with existing OS name
+                const updatedRow = `| ${existingName} | ${newStatus} | ${certificationCell} |`;
+                lines[i] = updatedRow;
                 updated = true;
                 break;
               }
